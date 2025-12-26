@@ -1,0 +1,9 @@
+{
+  "name": "Atmos Vision-Audit",
+  "description": "A Next-Gen Logistics AI platform prototype for last-mile delivery verification and monetization.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
