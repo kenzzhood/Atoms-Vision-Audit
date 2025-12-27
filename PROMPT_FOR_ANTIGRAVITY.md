@@ -1,4 +1,4 @@
-# PROMPT FOR ANTIGRAVITY (Mac Session)
+# PROMPT FOR ANTIGRAVITY (Linux Session)
 
 **You are an expert Autonomous AI Agent Developer.**
 
@@ -11,37 +11,39 @@ We are building **"AdSure Agent"** for the **Synaptix Frontier AI Hackathon (Tra
 - **Backend:** Python + Pathway (Stream Processing) + Google Gemini (LLM).
 - **Frontend:** React (Vite) + Framer Motion + Lucide Icons (Cyberpunk UI).
 
-## Current Status (Handed off from Windows)
-The project has been initialized and refactored.
+## Current Status
+The project is fully initialized. Use the **Real Pathway Architecture** since we are on Linux.
 1.  **Backend (`backend_pathway/`)**:
-    - `stream_simulator.py`: Generates JSONL events (Rain, Traffic, etc.).
-    - `agent_pathway.py`: **The Real Pathway Implementation** (for Linux/Mac/WSL).
-    - `agent.py`: A Windows-fallback using FastAPI.
-    - `requirements_pathway.txt`: Dependencies for Pathway environment.
-2.  **Frontend**:
-    - `views/Rider.tsx`: Refactored into the "AdSure Driver View" with simulated AR scanning.
-    - `components/DigitalLabel.tsx`: A component that polls `http://localhost:8000/`.
-    - **API Key**: `GEMINI_API_KEY` is set in `.env`.
+    - `stream_simulator.py`: Generates JSONL events.
+    - `agent_pathway.py`: **The Main Brain** (Pathway Engine). Reads stream $\to$ LLM $\to$ API.
+    - `requirements_pathway.txt`: Dependencies for Linux (includes `pathway`).
+2.  **Frontend (`src/`, `components/`, `views/`)**:
+    - `views/Rider.tsx`: The "Driver View" with simulated AR scanning.
+    - `components/DigitalLabel.tsx`: Connects to backend and updates label dynamically.
 
-## Immediate Task: Verify & Run on Linux/VM
-I am now on a **Linux (VM/WSL)** environment. I need you to help me run the **Real Pathway Architecture**.
+## Your Mission: Setup & Run
+I have just cloned this repo into my Linux VM. I need you to orchestrate the setup.
 
-**Instructions for you:**
-1.  **Environment Setup**:
-    - Verify we are in `backend_pathway`.
-    - Install dependencies: `pip install -r requirements_pathway.txt`
-    - Check that `.env` contains the `GEMINI_API_KEY`.
-2.  **Run the Pipeline**:
-    - Start `stream_simulator.py` in the background.
-    - Start `agent_pathway.py` (This starts the Pathway engine).
-3.  **Run the Frontend**:
-    - Navigate to root, run `npm run dev`.
-4.  **Verification**:
-    - Confirm that when the Simulator writes "Heavy Rain", the Frontend `DigitalLabel` updates to "Cozy Coffee" (or similar) without page refresh.
+**Step-by-Step Instructions:**
+1.  **Install Backend Dependencies**:
+    - `cd backend_pathway`
+    - `pip install -r requirements_pathway.txt` (Ensure `pathway` is installed).
+2.  **Configure Credentials**:
+    - Ask me for the `GEMINI_API_KEY` if it's missing in `.env`.
+3.  **Run the Backend Pipeline**:
+    - Start the Simulator: `python stream_simulator.py` (Background)
+    - Start the Agent: `python agent_pathway.py` (This starts the webserver on port 8000).
+4.  **Run the Frontend**:
+    - `cd ..` (Root)
+    - `npm install`
+    - `npm run dev`
 
-## Future Improvements (If time permits)
-- **Real AR**: Enhance the CSS overlay in `Rider.tsx` to actually use camera depth (if possible via WebXR) or just better visuals.
-- **Latency Optimization**: Ensure Pathway's streaming latency is negligible.
-- **History**: Display a history of changed labels in the UI.
+**Verification Goal:**
+- When `stream_simulator.py` outputs "Heavy Rain", the Frontend UI should automatically show a "Coffee Ad".
 
-**Action:** Please guide me through Step 1 (Setup) and get the `agent_mac.py` running!
+**Next Steps (Development):**
+- **Optimize Latency**: Tweak Pathway windowing if needed.
+- **Enhance UI**: Add a "History Log" of past ad decisions.
+- **Real AR**: Improve the camera overlay visuals.
+
+**ACTION:** Please start by checking if `backend_pathway/requirements_pathway.txt` allows `pathway` to install correctly on this system.
