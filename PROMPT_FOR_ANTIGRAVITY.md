@@ -1,49 +1,46 @@
-# PROMPT FOR ANTIGRAVITY (Linux Session)
+# MASTER PROMPT: AdSure Agent (Linux/Pathway Edition)
 
-**You are an expert Autonomous AI Agent Developer.**
+**You are a Senior Full-Stack Architect and Lead Developer.**
 
-## Project Context
-We are building **"AdSure Agent"** for the **Synaptix Frontier AI Hackathon (Track 1: Agentic AI)**.
-**Goal:** An Autonomous Logistics Agent that changes physical shipping labels in real-time based on live data streams (Weather, Traffic, Orders).
+## THE MISSION
+We are entering the **Synaptix Frontier AI Hackathon (Track 1: Agentic AI)**.
+**The Goal:** Build an "Autonomous Logistics Agent" that changes physical shipping labels in real-time based on live data (e.g., "It's raining" $\to$ "Print Coffee Ad").
+**The Core Tech:** The backend MUST use the **Pathway engine** to process live data streams.
 
-**Repository:** `https://github.com/kenzzhood/Atoms-Vision-Audit.git`
-**Tech Stack:**
-- **Backend:** Python + Pathway (Stream Processing) + Google Gemini (LLM).
-- **Frontend:** React (Vite) + Framer Motion + Lucide Icons (Cyberpunk UI).
+## YOUR CONTEXT
+- **Repository:** `https://github.com/kenzzhood/Atoms-Vision-Audit.git`
+- **Existing Code:** A **React (Vite)** Application (Driver View) and a **Python** Backend.
+- **Status:** Backend uses **Gemini** (via `google.generativeai`) and **Pathway**.
 
-## Current Status
-The project is fully initialized. Use the **Real Pathway Architecture** since we are on Linux.
-1.  **Backend (`backend_pathway/`)**:
-    - `stream_simulator.py`: Generates JSONL events.
-    - `agent_pathway.py`: **The Main Brain** (Pathway Engine). Reads stream $\to$ LLM $\to$ API.
-    - `requirements_pathway.txt`: Dependencies for Linux (includes `pathway`).
-2.  **Frontend (`src/`, `components/`, `views/`)**:
-    - `views/Rider.tsx`: The "Driver View" with simulated AR scanning.
-    - `components/DigitalLabel.tsx`: Connects to backend and updates label dynamically.
+## YOUR OBJECTIVES (Linux Environment)
 
-## Your Mission: Setup & Run
-I have just cloned this repo into my Linux VM. I need you to orchestrate the setup.
+### Phase 1: The 'Brain' (Backend)
+**Location:** `backend_pathway/`
+The backend is already implemented (`agent_pathway.py`), but needs to be **RUN** in this Linux/VM environment.
+- **Files:**
+    - `stream_simulator.py`: The "World" (Generates Rain/Traffic events).
+    - `agent_pathway.py`: The **Real Pathway Engine**.
+- **Action:**
+    1. `pip install -r requirements_pathway.txt`
+    2. Ensure `GEMINI_API_KEY` is in `.env`.
+    3. Run `python stream_simulator.py` (Background).
+    4. Run `python agent_pathway.py` (Main).
 
-**Step-by-Step Instructions:**
-1.  **Install Backend Dependencies**:
-    - `cd backend_pathway`
-    - `pip install -r requirements_pathway.txt` (Ensure `pathway` is installed).
-2.  **Configure Credentials**:
-    - Ask me for the `GEMINI_API_KEY` if it's missing in `.env`.
-3.  **Run the Backend Pipeline**:
-    - Start the Simulator: `python stream_simulator.py` (Background)
-    - Start the Agent: `python agent_pathway.py` (This starts the webserver on port 8000).
-4.  **Run the Frontend**:
-    - `cd ..` (Root)
-    - `npm install`
-    - `npm run dev`
+### Phase 2: The 'Face' (Frontend)
+**Location:** `src/` (Root)
+The UI has been refactored for a **Cyberpunk/Dark Mode** aesthetic.
+- **Features**:
+    - **Driver View**: AR-style overlay box for package scanning.
+    - **Digital Label**: A component that polls `http://localhost:8000/`.
+    - **The 'Wow' Feature**: Real-time sync. When backend detects "Rain", the Label changes Instantly.
+- **Action:**
+    1. `npm install`
+    2. `npm run dev`
 
-**Verification Goal:**
-- When `stream_simulator.py` outputs "Heavy Rain", the Frontend UI should automatically show a "Coffee Ad".
+## EXECUTION ORDER
+1.  **Initialize Backend**: Get the Stream $\to$ Pathway $\to$ Gemini pipeline working first.
+2.  **Launch Frontend**: interactions.
 
-**Next Steps (Development):**
-- **Optimize Latency**: Tweak Pathway windowing if needed.
-- **Enhance UI**: Add a "History Log" of past ad decisions.
-- **Real AR**: Improve the camera overlay visuals.
+**CRITICAL:** Verify that `agent_pathway.py` is running successfully. It is the heart of the "Agentic" track.
 
-**ACTION:** Please start by checking if `backend_pathway/requirements_pathway.txt` allows `pathway` to install correctly on this system.
+*Time to win this hackathon.*
